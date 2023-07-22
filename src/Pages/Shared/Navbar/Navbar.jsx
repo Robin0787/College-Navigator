@@ -3,8 +3,8 @@ import { VscHome } from 'react-icons/vsc';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    const active = `flex justify-center items-center gap-1 text-blue-500 shadow-[-2px_2px_0px] shadow-blue-200 text-[16px] px-2 py-1 duration-200`;
-    const notActive = `flex justify-center items-center gap-1 hover:text-blue-600 text-[16px] px-2 py-1 duration-200`;
+    const active = `flex justify-center items-center gap-1 bg-primary rounded-md text-secondary text-[16px] px-2 py-2 duration-100`;
+    const notActive = `flex justify-center items-center gap-1 hover:text-blue-600 text-[16px] px-2 py-2 duration-100`;
 
     const navItems = <>
         <NavLink to={'/'}
@@ -47,11 +47,11 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                    <NavLink to={'/profile'}
-                        className={({ isActive }) => isActive ? active : notActive} >
+                    <Link to={'/profile'}
+                        className={`text-secondary flex justify-center items-center gap-1 text-sm md:text-md px-3 py-[10px] md:px-4  rounded-md  bg-primary hover:bg-blue-700 duration-200`} >
                         <RiUserLine size={18} /> <span className='text-md'> Profile</span>
-                    </NavLink>
-                    <Link className='text-blue-500 bg-white hover:text-white text-sm md:text-md px-3 py-1 md:px-6 md:py-2 rounded-full ring-1 ring-blue-500 hover:bg-blue-600 hover: duration-300'>Login</Link>
+                    </Link>
+                    <Link className='text-blue-500 bg-white hover:text-white text-sm md:text-md px-3 py-2 md:px-6 md:py-2 rounded-md ring-2 ring-blue-500 hover:bg-blue-600 hover: duration-300'>Login</Link>
                 </div>
             </div>
         </section >

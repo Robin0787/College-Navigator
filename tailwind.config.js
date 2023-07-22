@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'primary': 'rgb(59 130 246)',
+        'secondary': '#ffffff'
+      },
+      colors: {
+        'primary': 'rgb(59 130 246)',
+        'secondary': '#ffffff'
+      },
+      backgroundImage: {
+        'bgHome':  "url('./bg-home.jpg')"
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
