@@ -1,10 +1,12 @@
+import PopularColleges from "./PopularColleges/PopularColleges";
 import SearchCollege from "./SearchCollege/SearchCollege";
 
 
 const Home = () => {
     return (
-        <section className="">
+        <section>
             <SearchCollege />
+            <PopularColleges />
         </section>
     );
 };
