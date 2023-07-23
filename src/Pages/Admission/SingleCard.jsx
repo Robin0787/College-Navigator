@@ -17,9 +17,9 @@ const SingleCard = ({ college }) => {
         setModal(false);
     }
     return (
-        <div className="shadow-[2px_0px_10px] shadow-blue-100 text-gray-200 text-base relative group overflow-hidden rounded-md bg-cover  "
+        <div className="shadow-[2px_0px_10px] shadow-blue-100 text-gray-200 text-base relative group overflow-hidden rounded-md bg-cover "
             style={{ backgroundImage: `url(${image})` }}>
-            <div className="bg-gray-800 bg-opacity-60 h-full p-4">
+            <div className="bg-gray-800 bg-opacity-50 h-full p-4">
                 <h2 className="text-3xl font-semibold text-gray-100">{name}</h2>
                 <p className='text-gray-300'>{location}</p>
                 {/* Admission Date section */}
@@ -34,7 +34,7 @@ const SingleCard = ({ college }) => {
                     <button className='text-white text-xl'>Book</button>
                     <BsArrowRightCircleFill size={20} className='text-white mt-1' />
                 </div>
-                <BookingForm BookingModal={modal} modalHandler={approveModalHandler} CloseBookingModal={CloseBookingModal} id={_id} name={name} admissionDates={admissionDates} />
+                <BookingForm BookingModal={modal} modalHandler={approveModalHandler} CloseBookingModal={CloseBookingModal} id={_id} name={name} admissionDates={admissionDates} image={image} />
             </div>
         </div>
     );

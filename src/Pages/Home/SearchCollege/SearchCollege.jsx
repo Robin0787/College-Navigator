@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast';
 import { ImSpinner9 } from "react-icons/im";
 import SingleCollege from "../../../Components/SingleCollege/SingleCollege";
+import bgImage from "../../../assets/bg-home.jpg";
+
 const SearchCollege = () => {
     const [colleges, setColleges] = useState(null);
     const inputRef = useRef();
@@ -69,7 +71,8 @@ const SearchCollege = () => {
     });
 
     return (
-        <section className="min-h-[calc(100vh-64px)] bg-bgHome bg-cover overflow-hidden">
+        <section className="min-h-[calc(100vh-64px)] bg-cover overflow-hidden"
+        style={{backgroundImage: `url(${bgImage})`}}>
             <article className="min-h-[calc(100vh-64px)] w-full bg-gray-800 bg-opacity-50">
                 {/*Search box */}
                 <form onSubmit={handleSearch} data-aos="fade-down" data-aos-delay="400" 

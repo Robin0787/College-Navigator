@@ -13,7 +13,7 @@ const Admission = () => {
             const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/colleges`);
             return res.data;
         }
-    })
+    });
 
     return (
         <section className='p-4 md:p-8'>

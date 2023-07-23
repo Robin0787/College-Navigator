@@ -25,7 +25,7 @@ const Colleges = () => {
                     <section className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 p-4 md:p-8">
                         {
                             colleges.map((college, index) => {
-                                return <SingleCollege college={college} key={index} index={index - 1} isShadow={true}/>
+                                return <SingleCollege college={college} key={index} isShadow={true}/>
                             })
                         }
                     </section>

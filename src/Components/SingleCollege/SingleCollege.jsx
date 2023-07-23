@@ -4,7 +4,7 @@ import { BsArrowRightCircleFill, BsFillCalendarCheckFill } from "react-icons/bs"
 import { Link } from 'react-router-dom';
 import ImageSlider from '../ImageSlider/ImageSlider';
 
-const SingleCollege = ({ college, isShadow, index }) => {
+const SingleCollege = ({ college, isShadow, index=1 }) => {
     const { name, image, description, photos, location, establishedDate, admissionDates, events, researchHistory, sports, ratings, _id } = college;
 
     return (

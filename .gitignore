@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 .firebase
+package-lock.json
+vite.config.js
+vite
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
