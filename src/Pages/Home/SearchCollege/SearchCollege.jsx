@@ -1,3 +1,4 @@
+import AOS from 'aos';
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast';
@@ -22,29 +23,57 @@ const SearchCollege = () => {
     async function handleSearch(e) {
         e.preventDefault();
         setDataLoading(true);
-        setColleges(null);
         const name = inputRef.current.value;
         if (name.length < 1) {
             setDataLoading(false);
             toast.error('Please write something!')
             inputRef.current.focus();
+            return;
         } else {
+            setColleges(null);
             const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/college/${name}`);
             if (res.data.length > 0) {
                 setDataLoading(false);
                 setColleges(res.data);
-                inputRef.current.value = '';
+                if (inputRef.current.value.length > 0) {
+                    inputRef.current.value = '';
+                }
             } else {
                 setDataLoading(false);
                 setColleges(null);
             }
         }
     }
+
+    AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: 'aos-init', // class applied after initialization
+        animatedClassName: 'aos-animate', // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 400, // values from 0 to 3000, with step 50ms
+        easing: 'ease', // default easing for AOS animations
+        once: false, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+    });
+
     return (
-        <section className="min-h-[calc(100vh-64px)] bg-bgHome bg-cover">
+        <section className="min-h-[calc(100vh-64px)] bg-bgHome bg-cover overflow-hidden">
             <article className="min-h-[calc(100vh-64px)] w-full bg-gray-800 bg-opacity-50">
                 {/*Search box */}
-                <form onSubmit={handleSearch} className="flex justify-center items-center relative pt-10">
+                <form onSubmit={handleSearch} data-aos="fade-down" data-aos-delay="400" 
+                data-aos-duration="800" className="flex justify-center items-center relative pt-10">
                     <input type="text"
                         ref={inputRef}
                         onFocus={() => { setFocus(!isFocused) }}
@@ -59,7 +88,10 @@ const SearchCollege = () => {
                         relative  ${isFocused ? 'left-0 ' : '-left-12  sm:-left-14'} duration-300 text-xs sm:text-base`}
                     >Search</button>
                 </form>
-                <section className="w-[100%] md:w-[70%] lg:w-[70%] mx-auto opacity-80 p-3 md:p-0 mt-5">
+                <section 
+                data-aos="fade-down" data-aos-delay="800" 
+                data-aos-duration="500"
+                className="w-[100%] md:w-[70%] lg:w-[70%] mx-auto opacity-90 p-3 md:p-0 mt-5">
                     {
                         dataLoading ?
                             (
@@ -71,7 +103,7 @@ const SearchCollege = () => {
                                     {
                                         colleges ? (
                                             colleges?.map((college, index) => {
-                                                return <SingleCollege college={college} key={index} isShadow={false} />
+                                                return <SingleCollege college={college} key={index} isShadow={false} index={index} />
                                             })
                                         ) : (
                                             <div className="text-center my-5 text-secondary text-3xl">
