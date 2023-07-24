@@ -7,10 +7,12 @@ import BookingForm from "../../Components/BookingForm/BookingForm";
 const SingleCard = ({ college }) => {
     const { name, admissionDates, location, _id, image } = college;
     const [modal, setModal] = useState(false);
+    
 
     const CloseBookingModal = () => {
         setModal(false);
     }
+
 
     return (
         <div className="shadow-[2px_0px_10px] shadow-blue-100 text-gray-200 text-base relative group overflow-hidden rounded-md bg-cover "
