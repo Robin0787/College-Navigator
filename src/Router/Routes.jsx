@@ -28,7 +28,7 @@ const routes = createBrowserRouter([
                 element: <Admission />
             },
             {
-                path: '/my-college',
+                path: '/my-colleges',
                 element: <PrivateRoute><MyCollege /></PrivateRoute>
             },
             {

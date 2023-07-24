@@ -1,9 +1,38 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useContext } from "react";
+import { ImSpinner9 } from "react-icons/im";
+import { authContext } from "../../Provider/Provider";
+import MySingleCollege from "./MySingleCollege";
 
 const MyCollege = () => {
+    const {user} = useContext(authContext);
+    const {data: bookings=[], isLoading } = useQuery(
+        {queryKey: ['my-bookings'],
+        disabled: !user,
+        queryFn: async () => {
+            const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/my-bookings/${user.email}`);
+            return res.data.reverse();
+        }
+    })
     return (
-        <div className="text-5xl text-center font-thin bg-blue-500 text-white h-[calc(100vh-64px)] flex justify-center items-center">
-            <h2>My College</h2>
-        </div>
+        <>
+            {
+                isLoading ? (
+                    <div className='h-[calc(100vh-64px)] flex justify-center items-center'>
+                        <ImSpinner9 className='animate-spin text-primary' size={30} />
+                    </div>
+                ) : (
+                    <section className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 p-4 md:p-8">
+                        {
+                            bookings.map((booking, index) => {
+                                return <MySingleCollege key={index} booking={booking} />
+                            })
+                        }
+                    </section>
+                )
+            }
+        </>
     );
 };
 

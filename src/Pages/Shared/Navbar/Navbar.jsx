@@ -10,6 +10,7 @@ const Navbar = () => {
 
     const active = `flex justify-center items-center gap-1 bg-primary rounded-md text-secondary text-[16px] px-2 py-2 duration-100`;
     const notActive = `flex justify-center items-center gap-1 hover:text-blue-600 text-[16px] px-2 py-2 duration-100`;
+    
     AOS.init({
         // Global settings:
         disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -32,6 +33,7 @@ const Navbar = () => {
         anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 
     });
+
     const navItems = <>
         <NavLink to={'/'}
             className={({ isActive }) => isActive ? active : notActive} >
@@ -45,9 +47,9 @@ const Navbar = () => {
             className={({ isActive }) => isActive ? active : notActive} >
             <RiUserAddLine size={18} /> <span className='text-md'> Admission </span>
         </NavLink>
-        <NavLink to={'/my-college'}
+        <NavLink to={'/my-colleges'}
             className={({ isActive }) => isActive ? active : notActive} >
-            <RiBookLine size={18} /> <span className='text-md'> My College </span>
+            <RiBookLine size={18} /> <span className='text-md'> My Colleges </span>
         </NavLink>
     </>
 

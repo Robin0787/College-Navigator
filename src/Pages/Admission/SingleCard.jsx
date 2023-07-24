@@ -11,6 +11,7 @@ const SingleCard = ({ college }) => {
     const CloseBookingModal = () => {
         setModal(false);
     }
+
     return (
         <div className="shadow-[2px_0px_10px] shadow-blue-100 text-gray-200 text-base relative group overflow-hidden rounded-md bg-cover "
             style={{ backgroundImage: `url(${image})` }}>
@@ -19,8 +20,8 @@ const SingleCard = ({ college }) => {
                 <p className='text-gray-300'>{location}</p>
                 {/* Admission Date section */}
                 <div className='my-3'>
-                    <h2 className="flex gap-1 items-center"><SiHashnode size={15} className='text-primary' /> Admission</h2>
-                    <h2 className="flex gap-2 items-center"><BsFillCalendarCheckFill size={15} className="text-primary" /> {admissionDates}</h2>
+                    <h2 className="flex gap-1 items-center"><SiHashnode size={15} className='' /> Admission</h2>
+                    <h2 className="flex gap-2 items-center"><BsFillCalendarCheckFill size={15} className="" /> {admissionDates}</h2>
                 </div>
                 {/* Details button */}
                 <div

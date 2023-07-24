@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { FaStarOfLife } from 'react-icons/fa';
 import { ImSpinner9 } from 'react-icons/im';
+import { useNavigate } from 'react-router-dom';
 import UploadBooking from '../../Hooks/UploadBooking';
 import UploadImage from '../../Hooks/UploadImage';
 import { authContext } from '../../Provider/Provider';
@@ -24,6 +25,7 @@ const BookingForm = ({ BookingModal, CloseBookingModal, image, id, name, admissi
     const [imageUploading, setImageUploading] = useState(false);
     const [imageURL, setImageURL] = useState('');
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
 
 
     function handleBooking(data) {
@@ -39,12 +41,16 @@ const BookingForm = ({ BookingModal, CloseBookingModal, image, id, name, admissi
             data.photo = imageURL;
             data.subject = selected?.name;
             data.collegeId = id;
+            data.collegeName = name;
+            data.collegeImage = image;
+            data.admissionDate = admissionDates;
             UploadBooking(data)
             .then(data => {
                 if(data.insertedId){
                     reset();
                     CloseBookingModal();
                     toast.success('College Booked');
+                    navigate('/my-colleges');
                 }
             })
             .catch((err) => {console.log(err.message)});
@@ -121,9 +127,8 @@ const BookingForm = ({ BookingModal, CloseBookingModal, image, id, name, admissi
                                                 <input type="text"
                                                     autoComplete='off'
                                                     defaultValue={user?.email}
-                                                    className='focus:text-gray-600 p-2 rounded-md bg-blue-200 bg-opacity-40 focus:bg-gray-200 w-full
-                                                     focus:outline-0 focus:pl-4 duration-300
-                                                     hover:cursor-pointer focus:cursor-text'
+                                                    readOnly="readOnly"
+                                                    className='p-2 rounded-md bg-blue-200 bg-opacity-40 w-full focus:outline-0 cursor-not-allowed'
                                                     {...register('email', {
                                                         required: true,
                                                         pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
@@ -175,7 +180,7 @@ const BookingForm = ({ BookingModal, CloseBookingModal, image, id, name, admissi
                                                     {
                                                         imageUploading ? (
                                                             <div className='h-[calc(100vh-64px)] flex justify-center items-center'>
-                                                                <ImSpinner9 className='animate-spin text-primary' size={30} />
+                                                                <ImSpinner9 className='animate-spin text-secondary' size={30} />
                                                             </div>
                                                         )
                                                             :
