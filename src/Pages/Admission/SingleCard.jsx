@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-hot-toast";
 import { BsArrowRightCircleFill, BsFillCalendarCheckFill } from "react-icons/bs";
 import { SiHashnode } from 'react-icons/si';
 import BookingForm from "../../Components/BookingForm/BookingForm";
@@ -8,10 +7,6 @@ import BookingForm from "../../Components/BookingForm/BookingForm";
 const SingleCard = ({ college }) => {
     const { name, admissionDates, location, _id, image } = college;
     const [modal, setModal] = useState(false);
-
-    const approveModalHandler = (id, feedback) => {
-        toast.success(id);
-    }
 
     const CloseBookingModal = () => {
         setModal(false);
@@ -34,7 +29,7 @@ const SingleCard = ({ college }) => {
                     <button className='text-white text-xl'>Book</button>
                     <BsArrowRightCircleFill size={20} className='text-white mt-1' />
                 </div>
-                <BookingForm BookingModal={modal} modalHandler={approveModalHandler} CloseBookingModal={CloseBookingModal} id={_id} name={name} admissionDates={admissionDates} image={image} />
+                <BookingForm BookingModal={modal} CloseBookingModal={CloseBookingModal} id={_id} name={name} admissionDates={admissionDates} image={image} />
             </div>
         </div>
     );
