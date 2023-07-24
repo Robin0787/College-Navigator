@@ -1,4 +1,5 @@
 import PopularColleges from "./PopularColleges/PopularColleges";
+import Reviews from "./Reviews/Reviews";
 import SearchCollege from "./SearchCollege/SearchCollege";
 
 
@@ -7,6 +8,7 @@ const Home = () => {
         <section>
             <SearchCollege />
             <PopularColleges />
+            <Reviews />
         </section>
     );
 };

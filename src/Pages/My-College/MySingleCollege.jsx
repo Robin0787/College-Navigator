@@ -16,7 +16,7 @@ const MySingleCollege = ({ booking }) => {
     const reviewModalHandler = async (review, rating) => {
         console.log(review);
         console.log(rating);
-        const data = {review, rating, collegeName, collegeImage, collegeId: _id };
+        const data = {review, rating, collegeName, collegeImage, collegeId: _id, name: candidateName, address };
         const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/add-review`, {...data});
         if(res.data.insertedId){
             toast.success('Review Added');
