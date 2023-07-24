@@ -1,13 +1,36 @@
+import axios from 'axios';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { BiUser } from 'react-icons/bi';
 import { BsFillCalendarCheckFill, BsInfoCircleFill } from "react-icons/bs";
 import { HiLocationMarker } from 'react-icons/hi';
 import { MdRateReview, MdSubject } from 'react-icons/md';
 import { SiHashnode } from 'react-icons/si';
+import ReviewModal from './ReviewModal';
 
 
 const MySingleCollege = ({ booking }) => {
-    const { collegeImage, collegeName, admissionDate, candidateName, email, subject, address } = booking;
-    
+    const { collegeImage, collegeName, admissionDate, candidateName, email, subject, address, _id } = booking;
+    const [reviewModal, setReviewModal] = useState(false);
+
+    const reviewModalHandler = async (review, rating) => {
+        console.log(review);
+        console.log(rating);
+        const data = {review, rating, collegeName, collegeImage, collegeId: _id };
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/add-review`, {...data});
+        if(res.data.insertedId){
+            toast.success('Review Added');
+            closeReviewModal();
+        }else {
+            toast.error('Something wrong! Try again.');
+        }
+    }
+
+    const closeReviewModal = () => {
+        setReviewModal(false);
+    }
+
+
     return (
         <div className="shadow-[2px_0px_10px] shadow-blue-100 text-gray-100 text-base relative group overflow-hidden rounded-md bg-cover "
             style={{ backgroundImage: `url(${collegeImage})` }}>
@@ -27,11 +50,13 @@ const MySingleCollege = ({ booking }) => {
                 </div>
                 {/* Review button */}
                 <div
+                    onClick={() => {setReviewModal(true)}}
                     className='absolute h-full w-full bg-gradient-to-r from-indigo-500 to-indigo-800 flex justify-center items-center gap-2 top-0 right-full cursor-pointer opacity-0 duration-700 group-hover:right-0 group-hover:opacity-100'>
                     <button className='text-white text-xl'>Review</button>
                     <MdRateReview size={20} className='text-white mt-1' />
                 </div>
             </div>
+            <ReviewModal modalHandler={reviewModalHandler} reviewModal={reviewModal} closeReviewModal={closeReviewModal} />
         </div>
     )
 };
