@@ -16,8 +16,8 @@ const SignUp = () => {
     const [login, setLogin] = useState(false);
     
     return (
-        <section className="flex justify-center items-center min-h-screen md:h-screen w-full">
-            <article className="rounded-lg bg-gradient-to-l from-blue-500 to-blue-800 text-blue-500 
+        <section className="flex justify-center items-center min-h-screen md:h-screen w-full  bg-gradient-to-b from-blue-900 to-blue-700">
+            <article className="rounded-lg bg-gradient-to-l from-blue-600 to-blue-800 text-blue-500 
             w-[95%] sm:w-[80%] md:w-[70%] lg:w-[60%] h-[90%] md:h-[50%] lg:h-[65%]">
                     <article className="md:flex justify-between items-center gap-4 sm:p-5 py-5 h-full space-y-5">
                         <div className="rounded-lg md:w-1/2 flex flex-col gap-5">

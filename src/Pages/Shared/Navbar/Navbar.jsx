@@ -78,7 +78,7 @@ const Navbar = () => {
                     {
                         user ?
                             (
-                                <Link to={'/profile'}
+                                <button 
                                     className={`text-secondary flex justify-center items-center gap-2 text-sm md:text-md px-3 py-2 md:px-4  rounded-md  bg-primary hover:bg-blue-700 duration-200`} >
                                     {
                                         user.photoURL ? 
@@ -91,7 +91,7 @@ const Navbar = () => {
                                         )
                                     }
                                     <span className='text-md font-semibold'> Profile</span>
-                                </Link>
+                                </button>
                             )
                             :
                             (

@@ -1,5 +1,5 @@
 import { FaFacebook, FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
-import logo from "../../../assets/logo.svg";
+import logo from "../../../assets/logo.png";
 const Footer = () => {
     return (
         <section className='bg-black text-gray-200 py-24 mx-auto'>
@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className='space-y-5'>
                     <div className='md:flex items-center gap-5'>
                         <img src={logo} alt="" className='h-12 w-12  rounded-full' />
-                        <h2 className="text-2xl font-bold">Lotus Light Studio</h2>
+                        <h2 className="text-2xl font-bold">College Navigator</h2>
                     </div>
                     <p className="text-md text-justify text-gray-400">Step into a world of adventure and imagination with our captivating collection of animal-inspired toys..</p>
                     <div className='flex items-center justify-start gap-4'>
@@ -62,7 +62,7 @@ const Footer = () => {
             <hr className='border-gray-800 my-10 w-[90%] mx-auto' />
             <div className='w-[90%] mx-auto flex justify-between items-center text-sm text-gray-400'>
                 <p>@2023 Lotus Light Studio. All Rights Reserved</p>
-                <p>Powered by Lotus Light Studio</p>
+                <p>Powered by College Navigator</p>
             </div>
         </section>
     );
